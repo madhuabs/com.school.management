@@ -1,0 +1,141 @@
+<!doctype html>
+<html ng-app="schoolApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="images/favicon.ico">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/angular-route.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/signin.css" rel="stylesheet">
+<script src="js/controllers/schoolControllers.js"></script>
+<script src="js/services/schoolFactory.js"></script>
+<script src="js/lib/angular-cookies.min.js"></script>
+<script src="js/app.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<title>School Management Software</title>
+
+</head>
+<body ng-controller="mainController"  onload="onPageLoad()">
+	<!-- Header Page Start -->
+	
+	<div class="loader" ng-show="initialized">
+		Loading...
+	</div>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top"
+		ng-show="!showLogin">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ng-class="{active: isActive('/')}"><a href="#">Home</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Student<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-class="{active: isActive('/studentEnroll')}"><a
+								href="#studentEnroll">Student Enrollment</a></li>
+							<li ng-class="{active: isActive('/studentSearch')}"><a
+								href="#studentSearch">Search Student</a></li>
+							<li ng-class="{active: isActive('/updateStudentDetails')}"><a
+								href="#updateStudentDetails">Update Student Details</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Payment<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-class="{active: isActive('/feeDetails')}"><a
+								href="#feeDetails">Fee Details</a></li>
+							<li ng-class="{active: isActive('/payFee')}"><a
+								href="#payFee">Pay Fee</a></li>
+							<li ng-class="{active: isActive('/updateFeeDetails')}"><a
+								href="#updateFeeDetails">Update Fee Details</a></li>
+							<li ng-class="{active: isActive('/pendingPay')}"><a
+								href="#pendingPay">Pending Payments</a></li>
+							<li ng-class="{active: isActive('/upcomingPay')}"><a
+								href="#upcomingPay">upcoming Payments</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Reports<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-class="{active: isActive('/genFeeReports')}"><a
+								href="#genFeeReports">Generate Fee Reports</a></li>
+							<li ng-class="{active: isActive('/genStudentReports')}"><a
+								href="#genStudentReports">Generate Student Reports</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Admin<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-class="{active: isActive('/createLogin')}"><a
+								href="#createLogin">Create Login</a></li>
+							<li ng-class="{active: isActive('/deleteLogin')}"><a
+								href="#deleteLogin">Delete Login</a></li>
+							<li ng-class="{active: isActive('/passwordReset')}"><a
+								href="#passwordReset">Password Reset</a></li>
+							<li ng-class="{active: isActive('/backupData')}"><a
+								href="#backupData">Backup Data</a></li>
+						</ul></li>
+
+
+				</ul>
+
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<!-- Header Page End -->
+	<!-- Login Page Start -->
+	<div ng-controller="schoolLoginCtrl"
+		ng-show="showLogin">
+		<form class="form-signin" ng-submit="login()">
+			<h2 class="form-signin-heading">Login Page</h2>
+			<label for="userName" class="sr-only">User Name</label> <input
+				type="text" id="userName" ng-model="user.userName"
+				class="form-control" placeholder="User Name" required autofocus>
+			<label for="inputPassword" class="sr-only">Password</label> <input
+				type="password" id="inputPassword" ng-model="user.password"
+				class="form-control" placeholder="Password" required>
+			<div class="alert alert-danger">{{errorMsg}}</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+				in</button>
+		</form>
+	</div>
+	<!-- Login Page  End -->
+	<div class="container" ng-show="!showLogin">
+		<div ng-view></div>
+	</div>
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="js/lib/jquery-2.0.2.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="js/lib/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
