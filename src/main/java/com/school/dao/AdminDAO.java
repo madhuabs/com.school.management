@@ -8,7 +8,11 @@ public interface AdminDAO {
 	public long passwordReset(User user);
 
 	long deleteUser(User user);
-
+/**
+ * 
+ * @param user
+ * @return
+ */
 	public long createUser(User user);
 	
 }
