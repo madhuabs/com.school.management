@@ -1,13 +1,20 @@
 package com.school.vo;
 
-import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Program implements Serializable {
+public class Program extends ValueObject {
 	private int programId;
 	private String programName;
-	private Object _id;
+	private Date creationDate;
+	private Date updatedDate;
+
+	public Program() {
+
+	}
 
 	public int getProgramId() {
 		return programId;
@@ -23,5 +30,35 @@ public class Program implements Serializable {
 
 	public void setProgramName(String programName) {
 		this.programName = programName;
+	}
+
+	/**
+	 * @return the creationDate
+	 */
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	/**
+	 * @return the updatedDate
+	 */
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	/**
+	 * @param creationDate
+	 *            the creationDate to set
+	 */
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	/**
+	 * @param updatedDate
+	 *            the updatedDate to set
+	 */
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 }

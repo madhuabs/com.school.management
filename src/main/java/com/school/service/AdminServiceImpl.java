@@ -1,10 +1,13 @@
 package com.school.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.school.dao.AdminDAO;
-import com.school.util.LoadMasterData;
+import com.school.util.SchoolMnginitialization;
 import com.school.vo.Status;
 import com.school.vo.User;
 import com.school.vo.UserStatus;
@@ -13,6 +16,8 @@ import com.school.vo.UserStatus;
 public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDAO adminDAO;
+	@Autowired
+	private SchoolMnginitialization schoolMnginitialization;
 
 	@Override
 	public UserStatus validateUser(User user) {
@@ -27,7 +32,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		if (result != null && user.getPassword().equals(result.getPassword()) && result.isActive()) {
 			status.setStatuscd("1");
-			status.setRoleName(LoadMasterData.rolesMap.get(result.getRoleId()));
+			status.setRoleName(schoolMnginitialization.rolesMap.get(result.getRoleId()));
 		} else {
 			status.setStatuscd("0");
 			status.setErrorDesc("User name/Password is Incorrect.");
@@ -80,7 +85,9 @@ public class AdminServiceImpl implements AdminService {
 	public Status createUser(User user) {
 		Status status = new Status();
 		if (adminDAO.fetchUser(user) == null) {
-			long result = adminDAO.createUser(user);
+			List<User> userList = new ArrayList<User>();
+			userList.add(user);
+			long result = adminDAO.insertManyDocuments("userCredentials", userList);
 			if (result > 0) {
 				status.setStatuscd("1");
 			} else {
@@ -102,4 +109,18 @@ public class AdminServiceImpl implements AdminService {
 		this.adminDAO = adminDAO;
 	}
 
+	/**
+	 * @return the schoolMnginitialization
+	 */
+	public SchoolMnginitialization getSchoolMnginitialization() {
+		return schoolMnginitialization;
+	}
+
+	/**
+	 * @param schoolMnginitialization
+	 *            the schoolMnginitialization to set
+	 */
+	public void setSchoolMnginitialization(SchoolMnginitialization schoolMnginitialization) {
+		this.schoolMnginitialization = schoolMnginitialization;
+	}
 }

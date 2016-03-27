@@ -37,15 +37,6 @@ countryControllers.controller('mainController', function($scope, $rootScope,
 		}
 		$rootScope.initialized = false;
 	};
-
-	onPageUnLoad = function() {
-		/* Remove All Cookies */
-		if ($cookies.get('showLogin') !== undefined) {
-			$cookies.remove('showLogin');
-			console.log("remove cookie");
-		}
-
-	};
 	$scope.isActive = function(viewLocation) {
 		return viewLocation === $location.path();
 	};

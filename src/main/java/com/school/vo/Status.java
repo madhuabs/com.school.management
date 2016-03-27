@@ -1,8 +1,6 @@
 package com.school.vo;
 
-import java.io.Serializable;
-
-public class Status implements Serializable {
+public class Status extends ValueObject {
 	private String statuscd;
 
 	public String getStatuscd() {

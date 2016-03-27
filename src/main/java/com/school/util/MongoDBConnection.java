@@ -11,15 +11,13 @@ import com.mongodb.client.MongoDatabase;
 public class MongoDBConnection {
 	private static MongoDatabase mongoDatabase = null;
 
-	@SuppressWarnings("resource")
 	@PostConstruct
-	private static void init() {
+	public void init() {
 		// FIXME: Add properties file to load mongo db details with credentials
-
 		mongoDatabase = new MongoClient("localhost", 27017).getDatabase("schooldb");
 	}
 
-	public static MongoDatabase getMongoDatabase() {
+	public MongoDatabase getMongoDatabase() {
 		return mongoDatabase;
 	}
 

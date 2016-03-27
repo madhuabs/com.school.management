@@ -1,16 +1,17 @@
 package com.school.vo;
 
-import java.io.Serializable;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User implements Serializable {
+public class User extends ValueObject {
 	private String password;
 	private String userName;
 	private int roleId;
 	private boolean active;
-	private Object _id;
+	private Date creationDate;
+	private Date updatedDate;
 
 	public int getRoleId() {
 		return roleId;
@@ -18,6 +19,20 @@ public class User implements Serializable {
 
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
+	}
+
+	public User() {
+
+	}
+
+	public User(String password, String userName, int roleId, boolean active, Date creationDate, Date updatedDate) {
+		super();
+		this.password = password;
+		this.userName = userName;
+		this.roleId = roleId;
+		this.active = active;
+		this.creationDate = creationDate;
+		this.updatedDate = updatedDate;
 	}
 
 	public String getUserName() {
@@ -42,6 +57,36 @@ public class User implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	/**
+	 * @return the creationDate
+	 */
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	/**
+	 * @return the updatedDate
+	 */
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	/**
+	 * @param creationDate
+	 *            the creationDate to set
+	 */
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	/**
+	 * @param updatedDate
+	 *            the updatedDate to set
+	 */
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 
 }

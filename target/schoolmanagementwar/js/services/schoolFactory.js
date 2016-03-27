@@ -5,7 +5,7 @@ schoolFactory.factory('loginService', function($http) {
 		login : function(user, callback) {
 			$http({
 				method : 'POST',
-				url : 'rest/admin/login',
+				url : 'rest/loginService/login',
 				data : angular.toJson(user, true)
 			}).success(callback);
 		},
