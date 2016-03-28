@@ -93,21 +93,24 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public long insertManyDocuments(String collectionName, List<? extends ValueObject> list) {
 		MongoDatabase database = mongoDBConnection.getMongoDatabase();
-		long result = 0;
+		long parseResult = 0;
 		List<Document> insertUserList = new ArrayList<Document>();
 		for (ValueObject valueObject : list) {
 			try {
 				insertUserList.add(Document.parse(mapper.writeValueAsString(valueObject)));
+				parseResult=1;
 			} catch (JsonProcessingException e) {
-				result = -1;
+				parseResult = -1;
 			}
 		}
-		if (result == 0) {
+		long result=0;
+		if (parseResult> 0) {
 			try {
 				database.getCollection(collectionName).insertMany(insertUserList);
-				result = 0;
+				result = 1;
 			} catch (RuntimeException exception) {
 				result = -1;
+				// FIXME: Rollback Transactions on failure.
 			}
 		}
 		return result;

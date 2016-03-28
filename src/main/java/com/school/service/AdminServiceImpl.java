@@ -1,6 +1,7 @@
 package com.school.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +86,8 @@ public class AdminServiceImpl implements AdminService {
 	public Status createUser(User user) {
 		Status status = new Status();
 		if (adminDAO.fetchUser(user) == null) {
+			user.setCreationDate(new Date());
+			user.setUpdatedDate(new Date());
 			List<User> userList = new ArrayList<User>();
 			userList.add(user);
 			long result = adminDAO.insertManyDocuments("userCredentials", userList);
