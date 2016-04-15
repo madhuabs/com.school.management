@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.school.service.AdminService;
+import com.school.service.UserService;
 import com.school.vo.User;
 import com.school.vo.UserStatus;
 
@@ -17,20 +17,28 @@ import com.school.vo.UserStatus;
 @Path("/loginService")
 public class LoginRestService {
 	@Autowired
-	private AdminService adminService;
+	private UserService userService;
 
 	@Path("login")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@POST
 	public UserStatus vaidateUserCredentials(User user) {
-		return adminService.validateUser(user);
-	}
-	public AdminService getAdminService() {
-		return adminService;
+		return userService.validateUser(user);
 	}
 
-	public void setAdminService(AdminService adminService) {
-		this.adminService = adminService;
+	/**
+	 * @return the userService
+	 */
+	public UserService getUserService() {
+		return userService;
+	}
+
+	/**
+	 * @param userService
+	 *            the userService to set
+	 */
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 }

@@ -9,9 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student extends ValueObject {
-	public Student(){
-		
+	public Student() {
+
 	}
+
+	private String studentRollNumber;
 	private String firstName;
 	private String lastName;
 	private String middleName;
@@ -36,6 +38,7 @@ public class Student extends ValueObject {
 	private List<Address> addressList;
 	private Date creationDate;
 	private Date updatedDate;
+	private String studentName;
 
 	public String getFirstName() {
 		return firstName;
@@ -241,5 +244,35 @@ public class Student extends ValueObject {
 
 	public void setAddressList(List<Address> addressList) {
 		this.addressList = addressList;
+	}
+
+	/**
+	 * @return the studentRollNumber
+	 */
+	public String getStudentRollNumber() {
+		return studentRollNumber;
+	}
+
+	/**
+	 * @param studentRollNumber
+	 *            the studentRollNumber to set
+	 */
+	public void setStudentRollNumber(String studentRollNumber) {
+		this.studentRollNumber = studentRollNumber;
+	}
+
+	/**
+	 * @return the studentName
+	 */
+	public String getStudentName() {
+		return new StringBuilder(firstName).append(" ").append(middleName).append(" ").append(lastName).toString();
+	}
+
+	/**
+	 * @param studentName
+	 *            the studentName to set
+	 */
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 }

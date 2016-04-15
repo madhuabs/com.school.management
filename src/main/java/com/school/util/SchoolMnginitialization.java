@@ -26,6 +26,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Projections;
 import com.school.dao.AdminDAO;
+import com.school.dao.UserDao;
 import com.school.vo.Facilities;
 import com.school.vo.Program;
 import com.school.vo.User;
@@ -40,6 +41,8 @@ public class SchoolMnginitialization {
 	public Set<Program> programSet = new HashSet<Program>();
 	public Map<Integer, String> faciliteisMap = new HashMap<Integer, String>();
 	public Set<Facilities> facilitiesSet = new HashSet<Facilities>();
+	@Autowired
+	private UserDao userDao;
 	ObjectMapper mapper = new ObjectMapper();
 
 	{
@@ -89,9 +92,9 @@ public class SchoolMnginitialization {
 
 		/* Insert Admin user */
 		List<User> insertUserList = new ArrayList<User>();
-		User user = new User("password", "Admin", 1, true, new Date(), new Date());
+		User user = new User("$2a$10$FDY/fvJ9M3yoaZuLyfukJuyOii3iZw6X7OK694P5UEd5dCkX/5Mr6", "Admin", 1, true, new Date(), new Date());
 		insertUserList.add(user);
-		if (adminDAO.fetchUser(user) == null) {
+		if (userDao.fetchUser(user) == null) {
 			/* Insert Admin Credentials */
 			adminDAO.insertManyDocuments("userCredentials", insertUserList);
 			logger.info("Basic Credentials Added::");
@@ -124,7 +127,7 @@ public class SchoolMnginitialization {
 		MongoCursor<Document> facilities = facilityIdCollection.iterator();
 		while (facilities.hasNext()) {
 			try {
-				Facilities result = mapper.readValue(programs.next().toJson(), Facilities.class);
+				Facilities result = mapper.readValue(facilities.next().toJson(), Facilities.class);
 				facilitiesSet.add(result);
 				faciliteisMap.put(result.getFacilityId(), result.getFacilityName());
 			} catch (JsonParseException e) {
@@ -189,5 +192,20 @@ public class SchoolMnginitialization {
 	 */
 	public void setAdminDAO(AdminDAO adminDAO) {
 		this.adminDAO = adminDAO;
+	}
+
+	/**
+	 * @return the userDao
+	 */
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	/**
+	 * @param userDao
+	 *            the userDao to set
+	 */
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 }

@@ -1,5 +1,7 @@
 package com.school.dao;
 
-public interface UserDao {
+import com.school.vo.User;
 
+public interface UserDao {
+	public User fetchUser(User user);
 }

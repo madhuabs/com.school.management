@@ -1,5 +1,7 @@
 package com.school.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +21,8 @@ public class StudentServiceImpl implements StudentService {
 		 * gender Fathers First Name, Last Name.. all case incentive.
 		 */
 		Status status = new Status();
-		if (studentDAO.fetchStudent(student) == null) {
+		List<Student> studentList = fetchStudent(student);
+		if (!studentList.isEmpty()) {
 			long result = studentDAO.enrollStudent(student);
 			if (result > 0) {
 				status.setStatuscd("1");
@@ -33,6 +36,13 @@ public class StudentServiceImpl implements StudentService {
 		}
 		return status;
 
+	}
+
+	@Override
+	public List<Student> fetchStudent(Student student) {
+		List<Student> studentList = studentDAO.fetchStudent(student.getStudentRollNumber(), student.getStudentName(),
+				student.getProgram(), student.getCreationDate(), student.getUpdatedDate());
+		return studentList;
 	}
 
 	public StudentDAO getStudentDAO() {
