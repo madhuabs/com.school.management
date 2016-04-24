@@ -21,22 +21,24 @@ public class Student extends ValueObject {
 	private String motherName;
 	private long fatherPhoneNumber;
 	private long motherPhoneNumber;
+	private String fatherOccupation;
+	private String motherOccupation;
 	private long homeLandline;
 	private long officeLandLine;
 	private long emergencyContact;
 	private String emergencyContactName;
 	private String program;
-	private boolean dayCare;
 	private String accademicYear;
 	private String gender;
 	private boolean transport;
 	private boolean food;
-	private String fatherOccupation;
-	private String motherOccupation;
+	private boolean dayCare;
 	private LocalDate doj;
 	private LocalDate dob;
 	private List<Address> addressList;
 	private String studentName;
+	private String fatherEmail;
+	private String motherEmail;
 
 	public String getFirstName() {
 		return firstName;
@@ -152,6 +154,34 @@ public class Student extends ValueObject {
 
 	public void setDoj(LocalDate doj) {
 		this.doj = doj;
+	}
+
+		/**
+	 * @return the fatherEmail
+	 */
+	public String getFatherEmail() {
+		return fatherEmail;
+	}
+
+	/**
+	 * @return the motherEmail
+	 */
+	public String getMotherEmail() {
+		return motherEmail;
+	}
+
+	/**
+	 * @param fatherEmail the fatherEmail to set
+	 */
+	public void setFatherEmail(String fatherEmail) {
+		this.fatherEmail = fatherEmail;
+	}
+
+	/**
+	 * @param motherEmail the motherEmail to set
+	 */
+	public void setMotherEmail(String motherEmail) {
+		this.motherEmail = motherEmail;
 	}
 
 		public void setDob(LocalDate dob) {
