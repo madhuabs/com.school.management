@@ -10,8 +10,6 @@ public class User extends ValueObject {
 	private String userName;
 	private int roleId;
 	private boolean active;
-	private Date creationDate;
-	private Date updatedDate;
 
 	public int getRoleId() {
 		return roleId;
@@ -58,35 +56,4 @@ public class User extends ValueObject {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-
-	/**
-	 * @return the creationDate
-	 */
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	/**
-	 * @return the updatedDate
-	 */
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-
-	/**
-	 * @param creationDate
-	 *            the creationDate to set
-	 */
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	/**
-	 * @param updatedDate
-	 *            the updatedDate to set
-	 */
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-
 }

@@ -66,9 +66,12 @@ public class SchoolMnginitialization {
 		collections.add("facilities");
 		collections.add("userCredentials");
 		collections.add("student");
-		collections.add("feeDetails");
-		collections.add("payment");
+		collections.add("feeDetails");		
 		collections.add("feeStructure");
+		collections.add("programFee");
+		collections.add("dayCareFee");
+		collections.add("transportFee");
+		collections.add("foodFee");
 		for (String coll : collections) {
 			if (dbCollections == null || !dbCollections.contains(coll)) {
 				/* Insert collections if not exists in DB. */

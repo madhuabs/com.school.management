@@ -36,8 +36,6 @@ public class Student extends ValueObject {
 	private LocalDate doj;
 	private LocalDate dob;
 	private List<Address> addressList;
-	private Date creationDate;
-	private Date updatedDate;
 	private String studentName;
 
 	public String getFirstName() {
@@ -156,37 +154,7 @@ public class Student extends ValueObject {
 		this.doj = doj;
 	}
 
-	/**
-	 * @return the creationDate
-	 */
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	/**
-	 * @return the updatedDate
-	 */
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-
-	/**
-	 * @param creationDate
-	 *            the creationDate to set
-	 */
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	/**
-	 * @param updatedDate
-	 *            the updatedDate to set
-	 */
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-
-	public void setDob(LocalDate dob) {
+		public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 
