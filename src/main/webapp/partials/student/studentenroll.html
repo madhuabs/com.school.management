@@ -2,7 +2,7 @@
 	<fieldset>
 
 		<!-- Form Name -->
-		<legend>Student Enrollment</legend>
+		<h2 class="form-signin-heading">Student Enrollment</h2>
 
 		<!-- Text input-->
 		<div class="form-group">
@@ -138,8 +138,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="gender">Select
-				Basic</label>
+			<label class="col-md-4 control-label" for="gender"></label>
 			<div class="col-md-4">
 				<select id="gender" name="gender" class="form-control">
 					<option value="-1">Select Gender</option>
@@ -190,17 +189,29 @@
 				</label>
 			</div>
 		</div>
-		
-		private LocalDate doj;
-	private LocalDate dob;
-	private List<Address> addressList;
-
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="enroll"></label>
+			<label class="col-md-4 control-label" for="doj"></label>
 			<div class="col-md-4">
-				<button id="enroll" name="enroll" class="btn btn-primary">Enroll</button>
+				<label class="control-label" for="doj-0"> Date Of Join<input type="date"
+					name="doj"> 
+				</label>
 			</div>
 		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="doj"></label>
+			<div class="col-md-4">
+				<label class="control-label" for="doj-0">Date Of Birth <input type="date"
+					name="doj"> 
+				</label>
+			</div>
+		</div>
+		<!-- Address will add later -->
 
+		<div class="form-group">
+				<label class="col-md-4 control-label" for="enroll"></label>
+				<div class="col-md-4">
+					<button id="enroll" name="enroll" class="btn btn-primary">Enroll</button>
+				</div>
+			</div>
 	</fieldset>
 </form>

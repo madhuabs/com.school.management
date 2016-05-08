@@ -2,6 +2,7 @@ package com.school.vo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * This class represents in Java collections with wild card operators.
@@ -11,20 +12,20 @@ import java.time.LocalDate;
  *
  */
 public class ValueObject implements Serializable {
-	protected LocalDate creationDate;
-	protected LocalDate updatedDate;
+	protected Date creationDate;
+	protected Date updatedDate;
 
 	/**
 	 * @return the creationDate
 	 */
-	public LocalDate getCreationDate() {
+	public Date getCreationDate() {
 		return creationDate;
 	}
 
 	/**
 	 * @return the updatedDate
 	 */
-	public LocalDate getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
@@ -32,7 +33,7 @@ public class ValueObject implements Serializable {
 	 * @param creationDate
 	 *            the creationDate to set
 	 */
-	public void setCreationDate(LocalDate creationDate) {
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
@@ -40,7 +41,7 @@ public class ValueObject implements Serializable {
 	 * @param updatedDate
 	 *            the updatedDate to set
 	 */
-	public void setUpdatedDate(LocalDate updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 }

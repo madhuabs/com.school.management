@@ -7,7 +7,10 @@ schoolApp.config(function($routeProvider) {
 		templateUrl : 'partials/admin/deleteUser.html',
 	}).when('/createLogin', {
 		templateUrl : 'partials/admin/createLogin.html',
+	}).when('/studentEnroll', {
+		templateUrl : 'partials/student/studentenroll.html',
 	}).otherwise({
 		redirectTo: '/'
 	});
 });
+

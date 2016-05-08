@@ -3,6 +3,7 @@ package com.school.util;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -109,7 +110,7 @@ public class SchoolMnginitialization {
 	}
 
 	private void userRoleCreation(List<UserRoles> insertRolesList, int roleId, String roleName) {
-		UserRoles role = new UserRoles(roleId, roleName, new Date(), new Date());
+		UserRoles role = new UserRoles(roleId, roleName, new Date(),new Date());
 		insertRolesList.add(role);
 	}
 
